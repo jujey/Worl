@@ -79,7 +79,7 @@ if [[ -d $worl ]]; then
 			if [[ -f $worl/$world.txt ]]; then
 			        printf "Current world: $world\n"
 		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
-				printf "\nDo /exit to quit Worl or type /help for more commands.\n" 
+				printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n" 
 			else
 				printf "There's no such world as '$world'!\n"
 				sleep 2
@@ -90,24 +90,25 @@ if [[ -d $worl ]]; then
 
 		while :; do
 			read -rp "> " input
-			if [[ $input = "/exit" ]]; then
-				clear 
+			if [[ $input = "exit" ]]; then
+				clear
+				printf "cya!\n\n"
 				exit 1
-			elif [[ $input = "/help" ]]; then
-				printf "\n/exit - Exit Worl :(\n/help - Show a list of commands.\n/new - Create a new world.\n/load - Load a different world.\n/clear - Clear the terminal.\n/del - Delete the current world.\n\n"
+			elif [[ $input = "help" ]]; then
+				printf "\nexit - Exit Worl :(\nhelp - Show a list of commands.\nnew - Create a new world.\nload - Load a different world.\nclear - Clear the terminal.\ndel - Delete the current world.\n\n"
 				continue 2
-			elif  [[ $input = "/new" ]]; then
+			elif  [[ $input = "new" ]]; then
 				clear
 				worldgen
-			elif [[ $input = "/load" ]]; then
+			elif [[ $input = "load" ]]; then
 				exec "$0"
-			elif [[ $input = "/clear" ]]; then
+			elif [[ $input = "clear" ]]; then
 				clear
 			        printf "Current world: $world\n"
 		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
-				printf "\nDo /exit to quit Worl or type /help for more commands.\n"
+				printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n"
 				continue 2
-			elif [[ $input = "/del" ]]; then
+			elif [[ $input = "del" ]]; then
 				rm $worl/$world.txt
 				printf "\nWorld deleted!\n"
 				printf "> "
