@@ -4,49 +4,78 @@
 clear
 worl=~/.worl
 
-if [[ -d $worl ]];then
+if [[ -d $worl ]]; then
 
         read -rp "Load world: " world
         clear
         printf "Current world: $world\n"
         cd $worl && printf "\n" && cat $world.txt
-        printf "\n\n"
+        printf "\n"
+	printf "Do /exit to quit Worl or type /help for more commands.\n" 
+	
+	while :; do
+		read -rp "> " input
+		if [[ $input = "/exit" ]]; then
+			clear 
+			exit 1
+		elif [[ $input = "/help" ]]; then
+			printf "\n/exit - Exit Worl :(\n/help - Show a list of commands.\n\n"
+			continue 2
+		fi
+	break;
+	done
 
 else
 
-        mkdir $worl && cd $worl
+        mkdir $worl
         read -rp "New world name: " world
         clear
-
+	
+	printf "Generating your world..."
         while :; do
 
                 random=$(echo $((1 + RANDOM % 16)))
 
-                if [[ $random = 1 ]];then
+                if [[ $random = 1 ]]; then
                         printf "." >> $worl/$world.txt
-                elif [[ $random = 2 ]];then
+                elif [[ $random = 2 ]]; then
                         printf "." >> $worl/$world.txt
-                elif [[ $random = 3 ]];then
+                elif [[ $random = 3 ]]; then
                         printf "." >> $worl/$world.txt
-                elif [[ $random = 4 ]];then
+                elif [[ $random = 4 ]]; then
                         printf "T" >> $worl/$world.txt
-                elif [[ $random = 5 ]];then
+                elif [[ $random = 5 ]]; then
                         printf "T" >> $worl/$world.txt
-                elif [[ $random = 6 ]];then
+                elif [[ $random = 6 ]]; then
                         printf "0" >> $worl/$world.txt
-                elif [[ $random = 7 ]];then
+                elif [[ $random = 7 ]]; then
                         printf "@" >> $worl/$world.txt
                 fi
 
                 size=$(echo $(wc -c $worl/$world.txt))
-                clear
-                printf "Generating your world..."
-                if [[ $size = "16 $worl/$world.txt" ]];then
+                if [[ $size = "100 $worl/$world.txt" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "33 $worl/$world.txt" ]];then
+                elif [[ $size = "201 $worl/$world.txt" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "50 $worl/$world.txt" ]];then
+                elif [[ $size = "302 $worl/$world.txt" ]]; then
                         printf "\n" >> $worl/$world.txt
+		elif [[ $size = "403 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+                elif [[ $size = "504 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "605 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+                elif [[ $size = "706 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "807 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+                elif [[ $size = "908 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1009 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+                elif [[ $size = "1110 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+			exec "$0"
                 fi
 
                 continue
