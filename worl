@@ -58,7 +58,45 @@ function worldgen {
                         printf "\n" >> $worl/$world.txt
 		elif [[ $size = "1009 $worl/$world.txt" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "1110 $worl/$world.txt" ]]; then
+		elif [[ $size = "1110 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1211 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1312 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1413 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1514 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1615 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1716 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1817 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "1918 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2019 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2120 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2221 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2322 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2423 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2524 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2625 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2726 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2827 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+		elif [[ $size = "2928 $worl/$world.txt" ]]; then
+                        printf "\n" >> $worl/$world.txt
+                elif [[ $size = "3029 $worl/$world.txt" ]]; then
                         printf "\n" >> $worl/$world.txt
 			exec "$0"
                 fi
@@ -110,7 +148,7 @@ if [[ -d $worl ]]; then
 				continue 2
 			elif [[ $input = "del" ]]; then
 				rm $worl/$world.txt
-				printf "\nWorld deleted!\n"
+				printf "\nWorld deleted!\n\n"
 				printf "> "
 				sleep 2
 				exec "$0"
