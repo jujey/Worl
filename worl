@@ -3,37 +3,19 @@
 
 clear
 worl=~/.worl
+worlds=$(echo $(ls $worl))
 
-if [[ -d $worl ]]; then
-
-        read -rp "Load world: " world
-        clear
-        printf "Current world: $world\n"
-        cd $worl && printf "\n" && cat $world.txt
-        printf "\n"
-	printf "Do /exit to quit Worl or type /help for more commands.\n" 
+function worldgen {
 	
-	while :; do
-		read -rp "> " input
-		if [[ $input = "/exit" ]]; then
-			clear 
-			exit 1
-		elif [[ $input = "/help" ]]; then
-			printf "\n/exit - Exit Worl :(\n/help - Show a list of commands.\n\n"
-			continue 2
-		fi
-	break;
-	done
-
-else
-
-        mkdir $worl
         read -rp "New world name: " world
         clear
-	
 	printf "Generating your world..."
-        while :; do
+	sleep 1
 
+        while :; do
+		
+		clear
+		printf "LOADING..."
                 random=$(echo $((1 + RANDOM % 16)))
 
                 if [[ $random = 1 ]]; then
@@ -53,6 +35,9 @@ else
                 fi
 
                 size=$(echo $(wc -c $worl/$world.txt))
+		clear
+		printf "LOADING..."
+
                 if [[ $size = "100 $worl/$world.txt" ]]; then
                         printf "\n" >> $worl/$world.txt
                 elif [[ $size = "201 $worl/$world.txt" ]]; then
@@ -77,9 +62,65 @@ else
                         printf "\n" >> $worl/$world.txt
 			exec "$0"
                 fi
-
                 continue
-
         break;
         done
+}
+
+if [[ -d $worl ]]; then
+	if [[ $worlds = "" ]]; then
+		worldgen
+	else
+		printf "List of worlds: \n\n" && ls $worl | sed -e 's/.txt//g' && printf "\n"
+	        read -rp "Load world: " world
+	        clear
+
+		while :; do
+			if [[ -f $worl/$world.txt ]]; then
+			        printf "Current world: $world\n"
+		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
+				printf "\nDo /exit to quit Worl or type /help for more commands.\n" 
+			else
+				printf "There's no such world as '$world'!\n"
+				sleep 2
+				exec "$0"
+			fi
+		break;
+		done
+
+		while :; do
+			read -rp "> " input
+			if [[ $input = "/exit" ]]; then
+				clear 
+				exit 1
+			elif [[ $input = "/help" ]]; then
+				printf "\n/exit - Exit Worl :(\n/help - Show a list of commands.\n/new - Create a new world.\n/load - Load a different world.\n/clear - Clear the terminal.\n/del - Delete the current world.\n\n"
+				continue 2
+			elif  [[ $input = "/new" ]]; then
+				clear
+				worldgen
+			elif [[ $input = "/load" ]]; then
+				exec "$0"
+			elif [[ $input = "/clear" ]]; then
+				clear
+			        printf "Current world: $world\n"
+		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
+				printf "\nDo /exit to quit Worl or type /help for more commands.\n"
+				continue 2
+			elif [[ $input = "/del" ]]; then
+				rm $worl/$world.txt
+				printf "\nWorld deleted!\n"
+				printf "> "
+				sleep 2
+				exec "$0"
+			else
+				printf "\nCommand not found.\n\n"
+				continue 2
+			fi
+		break;
+		done
+	fi
+else
+		mkdir $worl
+		worldgen	
 fi
