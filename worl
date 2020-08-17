@@ -25,69 +25,69 @@ function worldgen {
 		    7) printf "@" >> $worl/$world.txt ;;
 		esac
 
-		size=$(wc -c $worl/$world.txt)
+		size=$(wc -m < $worl/$world.txt)
 		clear
 		printf "LOADING..."
 
-                if [[ $size = "100 $worl/$world.txt" ]]; then
+                if [[ $size = "100" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "201 $worl/$world.txt" ]]; then
+                elif [[ $size = "201" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "302 $worl/$world.txt" ]]; then
+                elif [[ $size = "302" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "403 $worl/$world.txt" ]]; then
+		elif [[ $size = "403" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "504 $worl/$world.txt" ]]; then
+                elif [[ $size = "504" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "605 $worl/$world.txt" ]]; then
+		elif [[ $size = "605" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "706 $worl/$world.txt" ]]; then
+                elif [[ $size = "706" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "807 $worl/$world.txt" ]]; then
+		elif [[ $size = "807" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "908 $worl/$world.txt" ]]; then
+                elif [[ $size = "908" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1009 $worl/$world.txt" ]]; then
+		elif [[ $size = "1009" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1110 $worl/$world.txt" ]]; then
+		elif [[ $size = "1110" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1211 $worl/$world.txt" ]]; then
+		elif [[ $size = "1211" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1312 $worl/$world.txt" ]]; then
+		elif [[ $size = "1312" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1413 $worl/$world.txt" ]]; then
+		elif [[ $size = "1413" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1514 $worl/$world.txt" ]]; then
+		elif [[ $size = "1514" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1615 $worl/$world.txt" ]]; then
+		elif [[ $size = "1615" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1716 $worl/$world.txt" ]]; then
+		elif [[ $size = "1716" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1817 $worl/$world.txt" ]]; then
+		elif [[ $size = "1817" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1918 $worl/$world.txt" ]]; then
+		elif [[ $size = "1918" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2019 $worl/$world.txt" ]]; then
+		elif [[ $size = "2019" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2120 $worl/$world.txt" ]]; then
+		elif [[ $size = "2120" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2221 $worl/$world.txt" ]]; then
+		elif [[ $size = "2221" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2322 $worl/$world.txt" ]]; then
+		elif [[ $size = "2322" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2423 $worl/$world.txt" ]]; then
+		elif [[ $size = "2423" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2524 $worl/$world.txt" ]]; then
+		elif [[ $size = "2524" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2625 $worl/$world.txt" ]]; then
+		elif [[ $size = "2625" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2726 $worl/$world.txt" ]]; then
+		elif [[ $size = "2726" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2827 $worl/$world.txt" ]]; then
+		elif [[ $size = "2827" ]]; then
                         printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2928 $worl/$world.txt" ]]; then
+		elif [[ $size = "2928" ]]; then
                         printf "\n" >> $worl/$world.txt
-                elif [[ $size = "3029 $worl/$world.txt" ]]; then
+                elif [[ $size = "3029" ]]; then
                         printf "\n" >> $worl/$world.txt
 			exec "$0"
                 fi
