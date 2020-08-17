@@ -1,0 +1,44 @@
+#!/bin/bash
+# 'Worl' is a game written in bash about creating worlds and watch them go through life.
+
+clear
+worl=~/.worl/
+
+if [[ -d $worl ]];then
+
+        read -rp "Load world: " world
+        clear
+
+else
+
+        mkdir $worl && cd $worl
+        read -rp "New world name: " world
+        clear
+
+        while :; do
+
+                random=$(echo $((1 + RANDOM % 16)))
+
+                if [[ $random = 1 ]];then
+                        printf "#" >> $worl/$world.txt
+                elif [[ $random = 2 ]];then
+                        printf "T" >> $worl/$world.txt
+                elif [[ $random = 3 ]];then
+                        printf "T" >> $worl/$world.txt
+                elif [[ $random = 4 ]];then
+                        printf "0" >> $worl/$world.txt
+                elif [[ $random = 5 ]];then
+                        printf "@" >> $worl/$world.txt
+                else
+                        printf "#" >> $worl/$world.txt
+                fi
+
+                continue
+
+                if [[]];then
+                printf "\n" >> $worl/$world.txt
+                fi
+
+        break;
+        done
+fi
