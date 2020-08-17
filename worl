@@ -1,9 +1,9 @@
 #!/bin/bash
 # 'Worl' is an ASCII game written in bash about creating worlds and watching them go through life.
 
-clear
 worl=~/.worl
 worlds=$(echo $(ls $worl))
+clear
 
 function worldgen {
 	
@@ -16,25 +16,16 @@ function worldgen {
 		
 		clear
 		printf "LOADING..."
-                random=$(echo $((1 + RANDOM % 16)))
+		random=$((1 + RANDOM % 16))
 
-                if [[ $random = 1 ]]; then
-                        printf "." >> $worl/$world.txt
-                elif [[ $random = 2 ]]; then
-                        printf "." >> $worl/$world.txt
-                elif [[ $random = 3 ]]; then
-                        printf "." >> $worl/$world.txt
-                elif [[ $random = 4 ]]; then
-                        printf "T" >> $worl/$world.txt
-                elif [[ $random = 5 ]]; then
-                        printf "T" >> $worl/$world.txt
-                elif [[ $random = 6 ]]; then
-                        printf "0" >> $worl/$world.txt
-                elif [[ $random = 7 ]]; then
-                        printf "@" >> $worl/$world.txt
-                fi
+		case $random in
+		    1|2|3) printf "." >> $worl/$world.txt ;;
+		    4|5) printf "T" >> $worl/$world.txt ;; 
+		    6) printf "0" >> $worl/$world.txt ;;
+		    7) printf "@" >> $worl/$world.txt ;;
+		esac
 
-                size=$(echo $(wc -c $worl/$world.txt))
+		size=$(wc -c $worl/$world.txt)
 		clear
 		printf "LOADING..."
 
