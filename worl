@@ -8,6 +8,9 @@ if [[ -d $worl ]];then
 
         read -rp "Load world: " world
         clear
+        printf "Current world: $world\n"
+        cd $worl && printf "\n" && cat $world.txt
+        printf "\n\n"
 
 else
 
