@@ -2,7 +2,7 @@
 # 'Worl' is a game written in bash about creating worlds and watching them go through life.
 
 clear
-worl=~/.worl/
+worl=~/.worl
 
 if [[ -d $worl ]];then
 
@@ -20,24 +20,33 @@ else
                 random=$(echo $((1 + RANDOM % 16)))
 
                 if [[ $random = 1 ]];then
-                        printf "#" >> $worl/$world.txt
+                        printf "." >> $worl/$world.txt
                 elif [[ $random = 2 ]];then
-                        printf "T" >> $worl/$world.txt
+                        printf "." >> $worl/$world.txt
                 elif [[ $random = 3 ]];then
-                        printf "T" >> $worl/$world.txt
+                        printf "." >> $worl/$world.txt
                 elif [[ $random = 4 ]];then
-                        printf "0" >> $worl/$world.txt
+                        printf "T" >> $worl/$world.txt
                 elif [[ $random = 5 ]];then
+                        printf "T" >> $worl/$world.txt
+                elif [[ $random = 6 ]];then
+                        printf "0" >> $worl/$world.txt
+                elif [[ $random = 7 ]];then
                         printf "@" >> $worl/$world.txt
-                else
-                        printf "#" >> $worl/$world.txt
+                fi
+
+                size=$(echo $(wc -c $worl/$world.txt))
+                clear
+                printf "Generating your world..."
+                if [[ $size = "16 $worl/$world.txt" ]];then
+                        printf "\n" >> $worl/$world.txt
+                elif [[ $size = "33 $worl/$world.txt" ]];then
+                        printf "\n" >> $worl/$world.txt
+                elif [[ $size = "50 $worl/$world.txt" ]];then
+                        printf "\n" >> $worl/$world.txt
                 fi
 
                 continue
-
-                if [[]];then
-                printf "\n" >> $worl/$world.txt
-                fi
 
         break;
         done
