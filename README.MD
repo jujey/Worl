@@ -5,7 +5,6 @@
 - In development...
 
 Current objectives:
-- Finish world generation/make the world bigger!
+- Enhance world generation.
 - Add structures/new tiles.
 - Add 'life' to the game (Maybe some kind of AI?).
-- Bug fixing.
