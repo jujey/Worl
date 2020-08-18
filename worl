@@ -13,7 +13,6 @@ function worldgen {
 	sleep 1
 
         while :; do
-		
 		clear
 		printf "LOADING..."
 		random=$((1 + RANDOM % 16))
@@ -31,7 +30,7 @@ function worldgen {
 
 		case $size in
 			100|201|302|403|504|605|706|807|908) printf "\n" >> $worl/$world.txt ;;
-			1009) printf "\n" >> $worl/world.txt && exec "$0" ;;
+			1009) printf "\n" >> $worl/$world.txt && exec "$0" ;;
 		esac
 
                 continue
@@ -51,7 +50,7 @@ if [[ -d $worl ]]; then
 			if [[ -f $worl/$world.txt ]]; then
 			        printf "Current world: $world\n"
 		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
-				printf "\n\nType 'exit' to quit Worl or 'help' for a list of commands.\n" 
+				printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n\n" 
 			else
 				printf "There's no such world as '$world'!\n"
 				sleep 2
@@ -62,34 +61,16 @@ if [[ -d $worl ]]; then
 
 		while :; do
 			read -rp "> " input
-			if [[ $input = "exit" ]]; then
-				clear
-				printf "cya!\n\n"
-				exit 1
-			elif [[ $input = "help" ]]; then
-				printf "\nexit - Exit Worl :(\nhelp - Show a list of commands.\nnew - Create a new world.\nload - Load a different world.\nclear - Clear the terminal.\ndel - Delete the current world.\n\n"
-				continue 2
-			elif  [[ $input = "new" ]]; then
-				clear
-				worldgen
-			elif [[ $input = "load" ]]; then
-				exec "$0"
-			elif [[ $input = "clear" ]]; then
-				clear
-			        printf "Current world: $world\n"
-		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
-				printf "\n\nType 'exit' to quit Worl or 'help' for a list of commands.\n"
-				continue 2
-			elif [[ $input = "del" ]]; then
-				rm $worl/$world.txt
-				printf "\nWorld deleted!\n\n"
-				printf "> "
-				sleep 2
-				exec "$0"
-			else
-				printf "\nCommand not found.\n\n"
-				continue 2
-			fi
+
+			case $input in
+				exit) clear && printf "cya!\n\n";;
+				help) printf "\nexit - Exit Worl :(\nhelp - Show a list of commands.\nnew - Create a new world.\nload - Load a different world.\nclear - Clear the terminal.\ndel - Delete the current world.\n\n" && continue 2 ;;
+				new) clear && worldgen ;;
+				load) exec "$0" ;;
+				clear) clear && printf "Current world: $world\n" && cd $worl && printf "\n" && cat $world.txt && cd ~ && printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n\n" && continue 2 ;;
+				del) rm $worl/$world.txt && printf "\nWorld deleted!\n\n" && printf "> " && sleep 2 && exec "$0" ;;
+				*) printf "\nCommand not found.\n\n" && continue 2 ;;
+			esac
 		break;
 		done
 	fi
