@@ -29,68 +29,11 @@ function worldgen {
 		clear
 		printf "LOADING..."
 
-                if [[ $size = "100" ]]; then
-                        printf "\n" >> $worl/$world.txt
-                elif [[ $size = "201" ]]; then
-                        printf "\n" >> $worl/$world.txt
-                elif [[ $size = "302" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "403" ]]; then
-                        printf "\n" >> $worl/$world.txt
-                elif [[ $size = "504" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "605" ]]; then
-                        printf "\n" >> $worl/$world.txt
-                elif [[ $size = "706" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "807" ]]; then
-                        printf "\n" >> $worl/$world.txt
-                elif [[ $size = "908" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1009" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1110" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1211" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1312" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1413" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1514" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1615" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1716" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1817" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "1918" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2019" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2120" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2221" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2322" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2423" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2524" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2625" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2726" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2827" ]]; then
-                        printf "\n" >> $worl/$world.txt
-		elif [[ $size = "2928" ]]; then
-                        printf "\n" >> $worl/$world.txt
-                elif [[ $size = "3029" ]]; then
-                        printf "\n" >> $worl/$world.txt
-			exec "$0"
-                fi
+		case $size in
+			100|201|302|403|504|605|706|807|908) printf "\n" >> $worl/$world.txt ;;
+			1009) printf "\n" >> $worl/world.txt && exec "$0" ;;
+		esac
+
                 continue
         break;
         done
@@ -108,7 +51,7 @@ if [[ -d $worl ]]; then
 			if [[ -f $worl/$world.txt ]]; then
 			        printf "Current world: $world\n"
 		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
-				printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n" 
+				printf "\n\nType 'exit' to quit Worl or 'help' for a list of commands.\n" 
 			else
 				printf "There's no such world as '$world'!\n"
 				sleep 2
@@ -135,7 +78,7 @@ if [[ -d $worl ]]; then
 				clear
 			        printf "Current world: $world\n"
 		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
-				printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n"
+				printf "\n\nType 'exit' to quit Worl or 'help' for a list of commands.\n"
 				continue 2
 			elif [[ $input = "del" ]]; then
 				rm $worl/$world.txt
