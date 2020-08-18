@@ -9,7 +9,24 @@ function worldgen {
 	
         read -rp "New world name: " world
         clear
-	printf "Generating your world..."
+
+	while :; do
+		read -rp "Choose the size for your world (10-100): " worldsize
+		if [[ $worldsize -lt 10 ]]; then
+			printf "\nOnly type numbers between 10 and 100!\n\n"
+			sleep 2
+			clear
+			continue 2
+		elif [[ $worldsize -gt 100 ]]; then
+			printf "\nOnly type numbers between 10 and 100!\n\n"
+			sleep 2
+			clear
+			continue 2
+		fi
+	break;
+	done
+
+	printf "\nGenerating your world..."
 	sleep 1
 
         while :; do
@@ -18,10 +35,10 @@ function worldgen {
 		random=$((1 + RANDOM % 16))
 
 		case $random in
-		    1|2|3) printf "." >> $worl/$world.txt ;;
-		    4|5) printf "T" >> $worl/$world.txt ;; 
-		    6) printf "0" >> $worl/$world.txt ;;
-		    7) printf "@" >> $worl/$world.txt ;;
+		    1|2|3|4) printf "." >> $worl/$world.txt ;;
+		    5|6|7) printf "T" >> $worl/$world.txt ;; 
+		    8|9) printf "0" >> $worl/$world.txt ;;
+		    10) printf "@" >> $worl/$world.txt ;;
 		esac
 
 		size=$(wc -m < $worl/$world.txt)
@@ -29,8 +46,8 @@ function worldgen {
 		printf "LOADING..."
 
 		case $size in
-			100|201|302|403|504|605|706|807|908) printf "\n" >> $worl/$world.txt ;;
-			1009) printf "\n" >> $worl/$world.txt && exec "$0" ;;
+			$worldsize|$worldsize+10|$worldsize+20|$worldsize+30|$worldsize+40) printf "\n" >> $worl/$world.txt ;;
+			$worldsize+50) printf "\n" >> $worl/$world.txt && exec "$0" ;;
 		esac
 
                 continue
