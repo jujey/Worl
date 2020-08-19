@@ -6,7 +6,7 @@ worlds=$(echo $(ls $worl))
 clear
 
 function worldgen {
-	
+
         read -rp "New world name: " world
         clear
 
@@ -44,10 +44,9 @@ function worldgen {
 		size=$(wc -m < $worl/$world.txt)
 		clear
 		printf "LOADING..."
-
 		case $size in
-			$worldsize|$worldsize+10|$worldsize+20|$worldsize+30|$worldsize+40) printf "\n" >> $worl/$world.txt ;;
-			$worldsize+50) printf "\n" >> $worl/$world.txt && exec "$0" ;;
+			$worldsize|$((worldsize + 11))|$((worldsize + 22))|$((worldsize + 33))|$((worldsize + 44))) printf "\n" >> $worl/$world.txt ;;
+			$((worldsize + 55))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
 		esac
 
                 continue
