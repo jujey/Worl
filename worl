@@ -45,8 +45,8 @@ function worldgen {
 		clear
 		printf "LOADING..."
 		case $size in
-			$worldsize|$((worldsize + 11))|$((worldsize + 22))|$((worldsize + 33))|$((worldsize + 44))) printf "\n" >> $worl/$world.txt ;;
-			$((worldsize + 55))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
+			$worldsize|$((worldsize + $worldsize + 1))|$((worldsize * 3 + 2))|$((worldsize * 4 + 3))|$((worldsize * 5 + 4))) printf "\n" >> $worl/$world.txt ;;
+			$((worldsize * 6 + 5))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
 		esac
 
                 continue
