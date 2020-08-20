@@ -11,14 +11,14 @@ function worldgen {
         clear
 
 	while :; do
-		read -rp "Choose the size for your world (10-100): " worldsize
-		if [[ $worldsize -lt 10 ]]; then
-			printf "\nOnly type numbers between 10 and 100!\n\n"
+		read -rp "Choose the horizontal size for your world (10-100): " hsize
+		if [[ $hsize -lt 1 ]]; then
+			printf "\nOnly type numbers between 1 and 100!\n\n"
 			sleep 2
 			clear
 			continue 2
-		elif [[ $worldsize -gt 100 ]]; then
-			printf "\nOnly type numbers between 10 and 100!\n\n"
+		elif [[ $hsize -gt 100 ]]; then
+			printf "\nOnly type numbers between 1 and 100!\n\n"
 			sleep 2
 			clear
 			continue 2
@@ -45,8 +45,8 @@ function worldgen {
 		clear
 		printf "LOADING..."
 		case $size in
-			$worldsize|$((worldsize + $worldsize + 1))|$((worldsize * 3 + 2))|$((worldsize * 4 + 3))|$((worldsize * 5 + 4))) printf "\n" >> $worl/$world.txt ;;
-			$((worldsize * 6 + 5))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
+			$hsize|$((hsize * 2 + 1))|$((hsize * 3 + 2))|$((hsize * 4 + 3))|$((hsize * 5 + 4))) printf "\n" >> $worl/$world.txt ;;
+			$((hsize * 6 + 5))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
 		esac
 
                 continue
