@@ -9,14 +9,14 @@ function worldgen {
         read -rp "New world name: " world
         clear
 	while :; do
-		read -rp "Choose the horizontal size for your world (10-100): " hsize
+		read -rp "Choose the horizontal size for your world (50-100): " hsize
 		if [[ $hsize -lt 1 ]]; then
-			printf "\nOnly type numbers between 1 and 100!\n\n"
+			printf "\nOnly type numbers between 50 and 100!\n\n"
 			sleep 2
 			clear
 			continue 2
 		elif [[ $hsize -gt 100 ]]; then
-			printf "\nOnly type numbers between 1 and 100!\n\n"
+			printf "\nOnly type numbers between 50 and 100!\n\n"
 			sleep 2
 			clear
 			continue 2
@@ -143,7 +143,64 @@ function simulate {
 	clear
 	current
 	sed -i 's/@@/.o/g' $worl/$world.txt && cat $worl/$world.txt
-	
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/.@/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/.@/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/.@/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/.@/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/.@/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/.@/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/T@/.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@T/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@0/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/0@/.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@@/.o/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
 	printf "\nThe end!\n"
 	tip
 }
