@@ -10,7 +10,7 @@ function worldgen {
         clear
 	while :; do
 		read -rp "Choose the horizontal size for your world (50-100): " hsize
-		if [[ $hsize -lt 1 ]]; then
+		if [[ $hsize -lt 50 ]]; then
 			printf "\nOnly type numbers between 50 and 100!\n\n"
 			sleep 2
 			clear
@@ -198,9 +198,7 @@ function simulate {
 	clear
 	current
 	sed -i 's/@@/.o/g' $worl/$world.txt && cat $worl/$world.txt
-	printf "\n> "
-	sleep 0.5
-	clear
+
 	printf "\nThe end!\n"
 	tip
 }
