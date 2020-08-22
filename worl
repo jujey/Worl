@@ -6,10 +6,8 @@ worlds=$(echo $(ls $worl))
 clear
 
 function worldgen {
-
         read -rp "New world name: " world
         clear
-
 	while :; do
 		read -rp "Choose the horizontal size for your world (10-100): " hsize
 		if [[ $hsize -lt 1 ]]; then
@@ -25,22 +23,18 @@ function worldgen {
 		fi
 	break;
 	done
-
 	printf "\nGenerating your world..."
 	sleep 1
-
         while :; do
 		clear
 		printf "LOADING..."
 		random=$((1 + RANDOM % 16))
-
 		case $random in
 		    1|2|3|4) printf "." >> $worl/$world.txt ;;
 		    5|6|7) printf "T" >> $worl/$world.txt ;; 
 		    8|9) printf "0" >> $worl/$world.txt ;;
 		    10) printf "@" >> $worl/$world.txt ;;
 		esac
-
 		size=$(wc -m < $worl/$world.txt)
 		clear
 		printf "LOADING..."
@@ -48,10 +42,28 @@ function worldgen {
 			$hsize|$((hsize * 2 + 1))|$((hsize * 3 + 2))|$((hsize * 4 + 3))|$((hsize * 5 + 4))) printf "\n" >> $worl/$world.txt ;;
 			$((hsize * 6 + 5))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
 		esac
-
                 continue
         break;
         done
+}
+
+function tip {
+	printf "\nType 'start' to start the simulation, 'exit' to quit Worl and 'help' for a list of commands.\n\n"
+}
+
+function current {
+	printf "Current world: $world\n\n"
+}
+
+function simulate {
+	current
+	sed 's/T@/.@/g' $worl/$world.txt
+	printf "\n> "
+	sleep 1
+	clear
+	current
+	sed 's/@T/@./g' $worl/$world.txt
+	printf "\nThe end!\n\n"
 }
 
 if [[ -d $worl ]]; then
@@ -61,15 +73,11 @@ if [[ -d $worl ]]; then
 		printf "List of worlds: \n\n" && ls $worl | sed -e 's/.txt//g' && printf "\n"
 	        read -rp "Load world: " world
 	        clear
-
 		while :; do
 			if [[ -f $worl/$world.txt ]]; then
-			        printf "Current world: $world\n"
-		       	 	cd $worl && printf "\n" && cat $world.txt && cd ~
-				printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n\n"
-				sleep 1
-				clear
-				continue
+				current
+		       	 	cd $worl &&  cat $world.txt && cd ~
+				tip
 			else
 				printf "There's no such world as '$world'!\n"
 				sleep 2
@@ -77,17 +85,21 @@ if [[ -d $worl ]]; then
 			fi
 		break;
 		done
-
 		while :; do
 			read -rp "> " input
-
 			case $input in
 				exit) clear && printf "cya!\n\n";;
-				help) printf "\nexit - Exit Worl :(\nhelp - Show a list of commands.\nnew - Create a new world.\nload - Load a different world.\nclear - Clear the terminal.\ndel - Delete the current world.\n\n" && continue 2 ;;
+				help) printf "\nexit - Exit Worl :(\nhelp - Show a list of commands.\nnew - Create a new world.\nload - Load a different world.\nclear - Reset the terminal.\ndel - Delete the current world.\nstart - Start the Simulation.\n\n" && continue 2 ;;
 				new) clear && worldgen ;;
 				load) exec "$0" ;;
-				clear) clear && printf "Current world: $world\n" && cd $worl && printf "\n" && cat $world.txt && cd ~ && printf "\nType 'exit' to quit Worl or 'help' for a list of commands.\n\n" && continue 2 ;;
+				clear) clear && current && cat $worl/$world.txt && tip && cd ~ && continue 2 ;;
 				del) rm $worl/$world.txt && printf "\nWorld deleted!\n\n" && printf "> " && sleep 2 && exec "$0" ;;
+				start)
+					while :; do
+						clear && current && cat $worl/$world.txt && cd ~ && printf "\n> " && sleep 1 && clear && simulate && continue 2
+					break;
+					done
+				;;
 				*) printf "\nCommand not found.\n\n" && continue 2 ;;
 			esac
 		break;
