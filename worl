@@ -39,8 +39,8 @@ function worldgen {
 		clear
 		printf "LOADING..."
 		case $size in
-			$hsize|$((hsize * 2 + 1))|$((hsize * 3 + 2))|$((hsize * 4 + 3))|$((hsize * 5 + 4))) printf "\n" >> $worl/$world.txt ;;
-			$((hsize * 6 + 5))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
+			$hsize|$((hsize * 2 + 1))|$((hsize * 3 + 2))|$((hsize * 4 + 3))|$((hsize * 5 + 4))|$((hsize * 6 + 5))|$((hsize * 7 + 6))|$((hsize * 8 + 7))|$((hsize * 9 + 8))|$((hsize * 10 + 9))|$((hsize * 11 + 10))|$((hsize * 12 + 11))|$((hsize * 13 + 12))|$((hsize * 14 + 13))|$((hsize * 15 + 14))|$((hsize * 16 + 15))|$((hsize * 17 + 16))|$((hsize * 18 + 17))|$((hsize * 19 + 18))|$((hsize * 20 + 19))|$((hsize * 21 + 20))|$((hsize * 22 + 21))|$((hsize * 23 + 22))|$((hsize * 24 + 23))|$((hsize * 25 + 24))|$((hsize * 26 + 25))|$((hsize * 27 + 26))|$((hsize * 28 + 27))|$((hsize * 29 + 28))) printf "\n" >> $worl/$world.txt ;;
+			$((hsize * 30 + 29))) printf "\n" >> $worl/$world.txt && exec "$0" ;;
 		esac
                 continue
         break;
@@ -57,13 +57,95 @@ function current {
 
 function simulate {
 	current
-	sed 's/T@/.@/g' $worl/$world.txt
+	sed -i 's/T@/.@/g' $worl/$world.txt && cat $worl/$world.txt
 	printf "\n> "
-	sleep 1
+	sleep 0.5
 	clear
 	current
-	sed 's/@T/@./g' $worl/$world.txt
-	printf "\nThe end!\n\n"
+	sed -i 's/@T/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@0/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/0@/.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/.@/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/T@/.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@T/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@0/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/0@/.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@@/o./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@./.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@./.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@./.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/T@/.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@T/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@0/@./g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/0@/.@/g' $worl/$world.txt && cat $worl/$world.txt
+	printf "\n> "
+	sleep 0.5
+	clear
+	current
+	sed -i 's/@@/.o/g' $worl/$world.txt && cat $worl/$world.txt
+	
+	printf "\nThe end!\n"
+	tip
 }
 
 if [[ -d $worl ]]; then
